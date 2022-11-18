@@ -1,4 +1,4 @@
-//váriavel auxiliar usada para armazenar opções utilizado no método fetch 
+//váriavel auxiliar usada para armazenar opções utilizada no método fetch
 var requestOptions = {
   method: 'GET',
   redirect: 'follow'
@@ -9,7 +9,6 @@ async function listarEventos() {
   try {
     const response = await fetch("https://xp41-soundgarden-api.herokuapp.com/events", requestOptions);
     const data = await response.json();
-    console.log(data);
     const eventos = data
       .map((evento) =>  
         `<article class="evento card p-5 m-3">
@@ -18,7 +17,7 @@ async function listarEventos() {
           <p>
             ${evento.description}
           </p>
-          <a href="#" id="${evento._id}" class="btn btn-primary reservaIngresso">reservar ingresso</a>
+          <a href="#" data-id="${evento._id}"id="reservaIngresso" class="btn btn-primary">reservar ingresso</a>
         </article>`
       );
       document.getElementById('eventos').innerHTML = eventos;

@@ -10,13 +10,14 @@ async function cadastrar(event) {
     event.preventDefault()
     const inputNome = document.querySelector("#nome");
     const inputAtracoes = document.querySelector("#atracoes");
+    const inputBanner = document.querySelector("#banner");
     const inputDescricao = document.querySelector("#descricao");
     const inputData = document.querySelector("#data");
     const inputLotacao = document.querySelector("#lotacao");
     
     const dados = {
       "name": inputNome.value,
-      "poster": "link da imagem",
+      "poster": inputBanner.value,
       "attractions": [
         inputAtracoes.value.split(',')
       ],
@@ -34,6 +35,7 @@ async function cadastrar(event) {
     
     if(req){
       inputNome.value = '';
+      inputBanner.value = '';
       inputAtracoes.value = '';
       inputDescricao.value = '';
       inputData.value = '';
