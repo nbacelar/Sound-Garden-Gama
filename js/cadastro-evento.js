@@ -1,13 +1,6 @@
-//váriavel auxiliar usada para armazenar opções utilizada no método fetch
-var requestOptions = {
-  method: 'POST',
-  redirect: 'follow',
-};
-
 //função de cadastro de evento
-async function cadastrar(event) {
+async function cadastrar() {
   try {
-    event.preventDefault()
     const inputNome = document.querySelector("#nome");
     const inputAtracoes = document.querySelector("#atracoes");
     const inputBanner = document.querySelector("#banner");
@@ -26,14 +19,14 @@ async function cadastrar(event) {
       "number_tickets": inputLotacao.value   
     }
     //requisição de escrita no servidor
-    const req = await fetch('https://xp41-soundgarden-api.herokuapp.com/events', 
-    requestOptions,
-    {
+    const req = await fetch('https://xp41-soundgarden-api.herokuapp.com/events',{
+      method: 'POST',
+      redirect: 'follow',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(dados)
+      body: JSON.stringify(dados),
     });
     
-    if(req){
+    if(req.status == 201){
       inputNome.value = '';
       inputBanner.value = '';
       inputAtracoes.value = '';
@@ -51,5 +44,6 @@ async function cadastrar(event) {
 
 //função que associa o evento de cadastro um evento ao botão 'enviar'
 window.addEventListener('load', event => {
-  document.querySelector('form').addEventListener('submit', cadastrar);
+  document.getElementById('enviar').addEventListener('click', cadastrar);
+  console.log()
 });

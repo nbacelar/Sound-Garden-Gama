@@ -17,9 +17,9 @@ async function adminPainel() {
           <td>${linhaEvento.name}</td>
           <td>${linhaEvento.attractions}</td>
           <td>
-              <a href="Lista-de-reservas.html?id=${linhaEvento._id}" id="reserva" class="btn btn-dark reserva">ver reservas</a>
-              <a href="editar-evento.html?id=${linhaEvento._id}"  id="editar" class="btn btn-secondary editar">editar</a>
-              <a href="excluir-evento.html?id=${linhaEvento._id}" id="excluir" class="btn btn-danger excluir">excluir</a>
+              <a href="Lista-de-reservas.html?id=${linhaEvento._id}" class="btn btn-dark reserva">ver reservas</a>
+              <a href="editar-evento.html?id=${linhaEvento._id}"  class="btn btn-secondary editar">editar</a>
+              <a href="excluir-evento.html?id=${linhaEvento._id}" class="btn btn-danger excluir">excluir</a>
           </td>
         </tr>`   
       );
@@ -51,9 +51,9 @@ window.addEventListener('load', event => {
 //Quando a página estiver carregada, associa os eventos verReserva, editarReserva e excluirReserva aos seus botões
 window.onload = (event) => {
   setTimeout(() => {
-      const reserva_btn = document.getElementById('reserva');
-      const editar_btn = document.getElementById('editar');
-      const excluir_btn = document.getElementById('excluir');
+      const reserva_btn = document.getElementsByClassName('reserva');
+      const editar_btn = document.getElementsByClassName('editar');
+      const excluir_btn = document.getElementsByClassName('excluir');
       for(let i=0; i<reserva_btn.length; i++){
         reserva_btn.item(i).addEventListener('click', verReserva, false);
         editar_btn.item(i).addEventListener('click', editarReserva, false);
