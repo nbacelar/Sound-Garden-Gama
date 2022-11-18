@@ -7,3 +7,6 @@ tr th{
 td{
     padding: 6px;
 }
+#nome, #email, #id{
+    padding-right: 2rem;
+}
